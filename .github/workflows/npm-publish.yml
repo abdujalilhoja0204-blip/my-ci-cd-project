@@ -26,12 +26,12 @@ jobs:
 
       - name: Pull latest code on server
         run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "cd /path/to/project && git pull"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "cd /root/my-ci-cd/my-ci-cd-project && git pull"
 
       - name: Build Docker image on server
         run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "cd /path/to/project && docker build -t project-image:latest ."
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "cd /root/my-ci-cd/my-ci-cd-project && docker build -t project-image:latest ."
 
       - name: Run Docker container on server
         run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "docker stop project-container || true && docker rm project-container || true && docker run -d --name project-container -p 80:80 project-image:latest"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "docker stop project-container || true && docker rm project-container || true && docker run -d --name project-container -p 8098:3000 project-image:latest"
