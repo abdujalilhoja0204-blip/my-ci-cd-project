@@ -10,7 +10,7 @@ app.use(express.static('public'));
 
 // --- Hello world route ---
 app.get('/', (req, res) => {
-    res.send('Hello world');
+    res.send('Hello world CI-CD');
 });
 // --------------------------
 
