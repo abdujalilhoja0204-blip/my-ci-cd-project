@@ -8,6 +8,12 @@ const wss = new WebSocket.Server({ server });
 
 app.use(express.static('public'));
 
+// --- Hello world route ---
+app.get('/', (req, res) => {
+    res.send('Hello world');
+});
+// --------------------------
+
 wss.on('connection', function connection(ws) {
     console.log('New client connected');
 
